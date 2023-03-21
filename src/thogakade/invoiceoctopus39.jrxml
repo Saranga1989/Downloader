@@ -1,0 +1,977 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="qutation" language="groovy" pageWidth="595" pageHeight="842" columnWidth="525" leftMargin="40" rightMargin="30" topMargin="30" bottomMargin="40" uuid="acb376cd-cf81-4fb6-b530-537fada93a56">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="37"/>
+	<subDataset name="SubSet1" uuid="2914f7c6-c2d7-448b-b0c1-090970e18ed6">
+		<queryString>
+			<![CDATA[]]>
+		</queryString>
+		<field name="icon1" class="java.lang.String"/>
+		<field name="status1" class="java.lang.String"/>
+	</subDataset>
+	<subDataset name="SubSet2" uuid="2914f7c6-c2d7-448b-b0c1-090970e18ed6">
+		<queryString>
+			<![CDATA[]]>
+		</queryString>
+		<field name="icon" class="java.lang.String"/>
+		<field name="status" class="java.lang.String"/>
+	</subDataset>
+	<subDataset name="SubSet3" uuid="2914f7c6-c2d7-448b-b0c1-090970e18ed6">
+		<queryString>
+			<![CDATA[]]>
+		</queryString>
+		<field name="service" class="java.lang.String"/>
+		<field name="desc" class="java.lang.String"/>
+		<field name="qty" class="java.lang.String"/>
+		<field name="amount" class="java.lang.String"/>
+	</subDataset>
+	<subDataset name="SubSet4" uuid="2914f7c6-c2d7-448b-b0c1-090970e18ed6">
+		<queryString>
+			<![CDATA[]]>
+		</queryString>
+		<field name="description" class="java.lang.String"/>
+	</subDataset>
+	<parameter name="companylogo" class="java.io.ByteArrayInputStream"/>
+	<parameter name="time" class="java.lang.String"/>
+	<parameter name="footer10" class="java.lang.String"/>
+	<parameter name="jobitemdesc" class="java.lang.String"/>
+	<parameter name="line" class="java.lang.String"/>
+	<parameter name="customername2" class="java.lang.String"/>
+	<parameter name="footervalue" class="java.lang.String"/>
+	<parameter name="cutomersignature" class="java.lang.String"/>
+	<parameter name="jobdesc" class="java.lang.String"/>
+	<parameter name="expdate" class="java.lang.String"/>
+	<parameter name="buyertaxid" class="java.lang.String"/>
+	<parameter name="createdby" class="java.lang.String"/>
+	<parameter name="quenumber" class="java.lang.String"/>
+	<parameter name="field11" class="java.lang.String"/>
+	<parameter name="field12" class="java.lang.String"/>
+	<parameter name="billingaddress" class="java.lang.String"/>
+	<parameter name="shippingaddress" class="java.lang.String"/>
+	<parameter name="signature" class="java.io.ByteArrayInputStream"/>
+	<parameter name="logo" class="java.io.ByteArrayInputStream"/>
+	<parameter name="remarksquotation" class="java.lang.String"/>
+	<parameter name="qrParameter" class="java.io.ByteArrayInputStream"/>
+	<parameter name="qrstring" class="java.lang.String"/>
+	<parameter name="qrstring1" class="java.lang.String"/>
+	<parameter name="password1" class="java.lang.String"/>
+	<parameter name="password2" class="java.lang.String"/>
+	<parameter name="refnum" class="java.lang.String"/>
+	<parameter name="printdate" class="java.lang.String"/>
+	<parameter name="printdate1" class="java.lang.String"/>
+	<parameter name="footer1" class="java.lang.String"/>
+	<parameter name="footer2" class="java.lang.String"/>
+	<parameter name="footer3" class="java.lang.String"/>
+	<parameter name="footer4" class="java.lang.String"/>
+	<parameter name="footer5" class="java.lang.String"/>
+	<parameter name="footer6" class="java.lang.String"/>
+	<parameter name="footer7" class="java.lang.String"/>
+	<parameter name="footer8" class="java.lang.String"/>
+	<parameter name="footer9" class="java.lang.String"/>
+	<parameter name="logofile1" class="java.io.ByteArrayInputStream"/>
+	<parameter name="logofile" class="java.io.ByteArrayInputStream"/>
+	<parameter name="jobnumber" class="java.lang.String"/>
+	<parameter name="company" class="java.lang.String"/>
+	<parameter name="printstring" class="java.lang.String"/>
+	<parameter name="customercode" class="java.lang.String"/>
+	<parameter name="currencycode" class="java.lang.String"/>
+	<parameter name="customrphone" class="java.lang.String"/>
+	<parameter name="customeremail" class="java.lang.String"/>
+	<parameter name="productcode" class="java.lang.String"/>
+	<parameter name="itemdesc" class="java.lang.String"/>
+	<parameter name="serialnumber" class="java.lang.String"/>
+	<parameter name="warrantystatus" class="java.lang.String"/>
+	<parameter name="storeaddress" class="java.lang.String"/>
+	<parameter name="store" class="java.lang.String"/>
+	<parameter name="storephone" class="java.lang.String"/>
+	<parameter name="salesperson" class="java.lang.String"/>
+	<parameter name="customername" class="java.lang.String"/>
+	<parameter name="customerphone" class="java.lang.String"/>
+	<parameter name="salesdate" class="java.lang.String"/>
+	<parameter name="refnumber" class="java.lang.String"/>
+	<parameter name="warrantydate" class="java.lang.String"/>
+	<parameter name="total" class="java.lang.String"/>
+	<parameter name="totaltaxamt" class="java.lang.String"/>
+	<parameter name="totalnetamt" class="java.lang.String"/>
+	<parameter name="StatusDataSource1" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource">
+		<parameterDescription><![CDATA[]]></parameterDescription>
+	</parameter>
+	<parameter name="StatusDataSource2" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource">
+		<parameterDescription><![CDATA[]]></parameterDescription>
+	</parameter>
+	<parameter name="BillableItemDataSource" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource">
+		<parameterDescription><![CDATA[]]></parameterDescription>
+	</parameter>
+	<parameter name="JobHistoryDataSource" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource">
+		<parameterDescription><![CDATA[]]></parameterDescription>
+	</parameter>
+	<group name="invoice_group" footerPosition="StackAtBottom" keepTogether="true">
+		<groupHeader>
+			<band height="691">
+				<textField isBlankWhenNull="true">
+					<reportElement x="52" y="11" width="160" height="12" uuid="1069845d-6396-4b33-9f9f-6f7cd8bca21d"/>
+					<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0"/>
+					<textElement>
+						<font fontName="Arial Unicode MS" size="8" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{customername}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="52" y="37" width="160" height="12" uuid="cc50eecc-3d03-4541-a9e2-ffc246682a87"/>
+					<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0"/>
+					<textElement>
+						<font fontName="Arial Unicode MS" size="8" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{customerphone}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="52" y="24" width="160" height="12" uuid="e008bc99-cee3-4acd-a86e-fd6e2e4e9727"/>
+					<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0"/>
+					<textElement>
+						<font fontName="Arial Unicode MS" size="8" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{customeremail}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="9" y="140" width="175" height="12" uuid="fcdc7262-e8a2-42bf-acdf-467fecb0d241"/>
+					<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial Unicode MS" size="8" isBold="false" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[維修單號]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="259" y="152" width="46" height="12" uuid="e58651c3-6fd2-4dcd-99f5-456f856d901d"/>
+					<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial Unicode MS" size="8" isBold="false" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[門市地址]]></text>
+				</staticText>
+				<textField isBlankWhenNull="true">
+					<reportElement x="308" y="152" width="202" height="12" uuid="9c07de3b-1837-4cf2-97cf-dd514195361c"/>
+					<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0"/>
+					<textElement>
+						<font fontName="Arial Unicode MS" size="8" isBold="false" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{storeaddress}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="303" y="26" width="160" height="12" uuid="355b2dea-c344-498c-ab01-633eb741d050"/>
+					<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0"/>
+					<textElement>
+						<font fontName="Arial Unicode MS" size="8" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{itemdesc}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="303" y="38" width="160" height="12" uuid="28a23f5c-b2aa-418a-bfcc-3073261b651f"/>
+					<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0"/>
+					<textElement>
+						<font fontName="Arial Unicode MS" size="8" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{warrantystatus}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="303" y="64" width="90" height="12" uuid="cecd7846-ca89-49f7-88a5-36fa7fc5c12a"/>
+					<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0"/>
+					<textElement>
+						<font fontName="Arial Unicode MS" size="8" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{serialnumber}]]></textFieldExpression>
+				</textField>
+				<componentElement>
+					<reportElement stretchType="RelativeToBandHeight" x="5" y="225" width="250" height="41" isRemoveLineWhenBlank="true" isPrintInFirstWholeBand="true" isPrintWhenDetailOverflows="true" uuid="3f2455b2-fca5-4664-9b0e-607ac8091245">
+						<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
+					</reportElement>
+					<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" whenNoDataType="AllSectionsNoDetail">
+						<datasetRun subDataset="SubSet1" uuid="5984a1d5-5435-4f30-a7f5-cab5a5233a6b">
+							<dataSourceExpression><![CDATA[$P{StatusDataSource1}]]></dataSourceExpression>
+						</datasetRun>
+						<jr:column width="26" uuid="40216834-3667-480e-a954-d924193604a4">
+							<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column1"/>
+							<jr:detailCell height="10">
+								<textField>
+									<reportElement x="0" y="0" width="26" height="10" uuid="f1690c44-3229-48ca-9e9e-096c7eb75383"/>
+									<textElement textAlignment="Left">
+										<font size="8" isBold="true"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$F{icon1}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="166" uuid="37b932f0-618d-4d40-8e4f-14ad1c2e930c">
+							<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column2"/>
+							<jr:detailCell height="10">
+								<textField>
+									<reportElement x="0" y="0" width="166" height="10" uuid="267cb8d8-2e12-4c05-9b5c-db22b7c151d6"/>
+									<textElement textAlignment="Left">
+										<font fontName="Arial Unicode MS" size="8" isBold="false" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$F{status1}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+					</jr:table>
+				</componentElement>
+				<componentElement>
+					<reportElement stretchType="RelativeToBandHeight" x="258" y="225" width="250" height="41" isRemoveLineWhenBlank="true" isPrintInFirstWholeBand="true" isPrintWhenDetailOverflows="true" uuid="3c4e58c7-3b84-4466-a030-607ab35635c7">
+						<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
+					</reportElement>
+					<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" whenNoDataType="AllSectionsNoDetail">
+						<datasetRun subDataset="SubSet2" uuid="fb40c78c-731d-4c8a-9c46-8b25992a7e27">
+							<dataSourceExpression><![CDATA[$P{StatusDataSource2}]]></dataSourceExpression>
+						</datasetRun>
+						<jr:column width="26" uuid="906c5ce3-6c95-46d8-a3bf-66997d56d0ff">
+							<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column1"/>
+							<jr:detailCell height="10">
+								<textField>
+									<reportElement x="0" y="0" width="26" height="10" uuid="c338020f-f473-4d25-90ce-0f9adedb5204"/>
+									<textElement textAlignment="Left">
+										<font size="8" isBold="false"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$F{icon}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="166" uuid="90058782-8245-4b41-b4c2-78f5add30d3d">
+							<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column2"/>
+							<jr:detailCell height="10">
+								<textField>
+									<reportElement x="0" y="0" width="166" height="10" uuid="2fa36ef6-c80b-499b-8382-7c6a2ecc5767"/>
+									<textElement textAlignment="Left">
+										<font fontName="Arial Unicode MS" size="8" isBold="false" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$F{status}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+					</jr:table>
+				</componentElement>
+				<staticText>
+					<reportElement x="0" y="350" width="104" height="15" uuid="297193c7-cf4e-404e-acb5-a180bb018b53"/>
+					<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial Unicode MS" size="8" isBold="false" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[維修代碼]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="105" y="350" width="217" height="15" uuid="a3073e8f-ba63-4301-a613-591c5a39e6a7"/>
+					<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial Unicode MS" size="8" isBold="false" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[描述]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="400" y="350" width="125" height="15" uuid="169b820c-f961-4540-8ff7-f5bcc2deeda8"/>
+					<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial Unicode MS" size="8" isBold="false" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[金額]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="322" y="350" width="78" height="15" uuid="b5788223-3b6d-42cd-a89d-18c3f4f7daad"/>
+					<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial Unicode MS" size="8" isBold="false" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[數量]]></text>
+				</staticText>
+				<componentElement>
+					<reportElement stretchType="RelativeToBandHeight" x="0" y="365" width="525" height="94" isRemoveLineWhenBlank="true" isPrintInFirstWholeBand="true" isPrintWhenDetailOverflows="true" uuid="ae62d308-0697-448e-b246-6e81eeb270c9">
+						<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
+					</reportElement>
+					<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" whenNoDataType="AllSectionsNoDetail">
+						<datasetRun subDataset="SubSet3" uuid="11f3dca2-1b14-40e8-95cd-c8ec15d59d79">
+							<dataSourceExpression><![CDATA[$P{BillableItemDataSource}]]></dataSourceExpression>
+						</datasetRun>
+						<jr:column width="104" uuid="3c26816f-a0d1-4d80-8731-14db89f7e6bd">
+							<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column1"/>
+							<jr:detailCell height="18">
+								<textField>
+									<reportElement x="0" y="0" width="104" height="18" uuid="de279540-2e6e-41c7-948b-cac542060b8c"/>
+									<textElement textAlignment="Left">
+										<font fontName="Arial Unicode MS" size="8" isBold="false" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$F{service}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="217" uuid="7d338405-7749-4042-8b40-bca134d2ab80">
+							<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column2"/>
+							<jr:detailCell height="18">
+								<textField>
+									<reportElement x="0" y="0" width="217" height="18" uuid="521db45c-cdd6-4be9-8158-c7ef5c786872"/>
+									<textElement textAlignment="Left">
+										<font fontName="Arial Unicode MS" size="8" isBold="false" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$F{desc}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="78" uuid="7d338405-7749-4042-8b40-bca134d2ab80">
+							<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column2"/>
+							<jr:detailCell height="18">
+								<textField>
+									<reportElement x="0" y="0" width="78" height="18" uuid="521db45c-cdd6-4be9-8158-c7ef5c786872"/>
+									<textElement textAlignment="Center">
+										<font fontName="Arial Unicode MS" size="8" isBold="false" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$F{qty}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="125" uuid="6fd59e08-ae89-4d09-8cdf-9686e38f0153">
+							<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column3"/>
+							<jr:detailCell height="18">
+								<textField>
+									<reportElement x="0" y="0" width="125" height="18" uuid="c0674238-d4ae-4def-9e7e-5186c7380308"/>
+									<textElement textAlignment="Right">
+										<font fontName="Arial Unicode MS" size="8" isBold="false" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$F{amount}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+					</jr:table>
+				</componentElement>
+				<staticText>
+					<reportElement positionType="Float" x="343" y="465" width="55" height="13" uuid="a982c00a-e8f0-4082-9058-6dc9a00fdc67"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="Arial Unicode MS" size="8" isBold="false" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[含稅總額]]></text>
+				</staticText>
+				<textField isBlankWhenNull="true">
+					<reportElement positionType="Float" isPrintRepeatedValues="false" x="400" y="465" width="123" height="13" uuid="9d808be0-e3e5-4dbc-aa7e-d8c7d72c7b8e"/>
+					<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" size="8" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{totalnetamt}]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement positionType="Float" x="0" y="461" width="525" height="1" uuid="7119fee6-9150-4b7b-8114-d0d736b75a2b"/>
+				</line>
+				<line>
+					<reportElement positionType="Float" x="0" y="480" width="524" height="1" isRemoveLineWhenBlank="true" isPrintInFirstWholeBand="true" isPrintWhenDetailOverflows="true" uuid="f63d7475-84c7-4e8a-a417-e78ad5f04f57"/>
+				</line>
+				<staticText>
+					<reportElement x="0" y="3" width="250" height="80" uuid="5bec2b9b-e89f-4a21-a5b4-eabdcf1eb028"/>
+					<box>
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[]]></text>
+				</staticText>
+				<textField isBlankWhenNull="true">
+					<reportElement x="303" y="51" width="90" height="12" uuid="299f06c6-b29e-4f8a-93a9-95df2f2e97b6"/>
+					<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0"/>
+					<textElement>
+						<font fontName="Arial Unicode MS" size="8" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{warrantydate}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="259" y="138" width="46" height="12" uuid="fdb1ed85-c7e2-412a-bff5-074a7b52714c"/>
+					<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial Unicode MS" size="8" isBold="false" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[門市]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="336" width="127" height="12" uuid="3ded5ed5-1550-4bea-93b0-aee2430eec94"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="Arial Unicode MS" size="8" isBold="false" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[維修項目 ]]></text>
+				</staticText>
+				<textField isBlankWhenNull="true">
+					<reportElement x="308" y="138" width="202" height="12" uuid="99f81f87-3c9c-4e72-9ad6-68e6e9c479da"/>
+					<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0"/>
+					<textElement>
+						<font fontName="Arial Unicode MS" size="8" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{store}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="252" y="132" width="272" height="75" uuid="5e6474eb-18ae-4e82-bfaa-ca08686a74c8"/>
+					<box>
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" isBold="true"/>
+					</textElement>
+					<text><![CDATA[]]></text>
+				</staticText>
+				<textField isBlankWhenNull="true">
+					<reportElement x="9" y="154" width="235" height="10" uuid="e32172d8-e967-4c5a-ab6f-0a634110c893"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial" size="8" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{qrstring1}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="0" y="132" width="250" height="75" uuid="22ded202-807b-422a-b54a-de5d81f1b82d"/>
+					<box>
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" isBold="true"/>
+					</textElement>
+					<text><![CDATA[]]></text>
+				</staticText>
+				<image scaleImage="RetainShape" onErrorType="Blank">
+					<reportElement x="9" y="168" width="74" height="38" uuid="3c1586bb-ed30-4660-ad40-72c43920c748"/>
+					<imageExpression><![CDATA[$P{qrParameter}]]></imageExpression>
+				</image>
+				<staticText>
+					<reportElement x="252" y="3" width="273" height="80" uuid="ceb58f59-8633-4e68-b7d9-f4c010b0cbe1"/>
+					<box>
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" isBold="true"/>
+					</textElement>
+					<text><![CDATA[]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="223" width="525" height="48" uuid="bfb2fed9-37ca-4590-9e18-848022cbaca3"/>
+					<box>
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" isBold="true"/>
+					</textElement>
+					<text><![CDATA[]]></text>
+				</staticText>
+				<textField isBlankWhenNull="true">
+					<reportElement x="52" y="92" width="473" height="14" uuid="82bd683a-3eed-40a5-a663-a74c40fb43f4"/>
+					<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0"/>
+					<textElement>
+						<font fontName="Arial Unicode MS" size="8" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{billingaddress}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="9" y="92" width="40" height="14" uuid="2043aaac-4fc8-455d-9aa6-fa9b2149c92a"/>
+					<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial Unicode MS" size="8" isBold="false" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[帳單地址]]></text>
+				</staticText>
+				<textField isBlankWhenNull="true">
+					<reportElement x="52" y="107" width="473" height="14" uuid="373bb045-f81b-4733-8c42-ddab1c8997e1"/>
+					<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0"/>
+					<textElement>
+						<font fontName="Arial Unicode MS" size="8" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{shippingaddress}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="9" y="107" width="40" height="14" uuid="10923d0c-0e1f-4f73-8036-7eb62680bfee"/>
+					<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial Unicode MS" size="8" isBold="false" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[送貨地址]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="85" width="525" height="45" uuid="399cfdcf-08e0-4d55-8a7a-d96e421cfb53"/>
+					<box>
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[]]></text>
+				</staticText>
+				<textField isBlankWhenNull="true">
+					<reportElement x="52" y="50" width="160" height="12" uuid="4037a65e-6dbd-4ef0-a59e-e6f0ef0f5d75"/>
+					<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0"/>
+					<textElement>
+						<font fontName="Arial Unicode MS" size="8" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{field11}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="303" y="12" width="160" height="12" uuid="5d7033b1-606c-416b-9027-c6968487a6c3"/>
+					<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0"/>
+					<textElement>
+						<font fontName="Arial Unicode MS" size="8" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{field12}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="52" y="63" width="160" height="12" uuid="15091ba2-6f82-426a-a282-1df4c9ed698c"/>
+					<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0"/>
+					<textElement>
+						<font fontName="Arial Unicode MS" size="8" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{buyertaxid}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement positionType="Float" x="7" y="11" width="42" height="12" uuid="383b9aa2-7498-4cc6-a387-b878545930cc"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="Arial Unicode MS" size="8" isBold="false" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[姓名]]></text>
+				</staticText>
+				<staticText>
+					<reportElement positionType="Float" x="7" y="24" width="42" height="12" uuid="85e74247-5056-41d1-a9cb-9b44b82b2abb"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="Arial Unicode MS" size="8" isBold="false" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[電子信箱]]></text>
+				</staticText>
+				<staticText>
+					<reportElement positionType="Float" x="7" y="37" width="42" height="12" uuid="620810f7-79de-4182-883a-fa7b6e856255"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="Arial Unicode MS" size="8" isBold="false" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[手機號碼]]></text>
+				</staticText>
+				<staticText>
+					<reportElement positionType="Float" x="7" y="50" width="42" height="12" uuid="153e884c-5e04-4331-a8ac-7898920eaf7d"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="Arial Unicode MS" size="8" isBold="false" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[室內電話]]></text>
+				</staticText>
+				<staticText>
+					<reportElement positionType="Float" x="7" y="63" width="42" height="12" uuid="89f08b68-6779-47d5-bbf1-734d46d712fd"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="Arial Unicode MS" size="8" isBold="false" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[統編 ]]></text>
+				</staticText>
+				<staticText>
+					<reportElement positionType="Float" x="259" y="12" width="42" height="12" uuid="a1c5b813-b0c8-4e8b-9503-1cc1e94e0c45"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="Arial Unicode MS" size="8" isBold="false" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[產品系列]]></text>
+				</staticText>
+				<staticText>
+					<reportElement positionType="Float" x="259" y="25" width="42" height="12" uuid="3dd60fef-35cc-4b26-8733-734029298bcc"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="Arial Unicode MS" size="8" isBold="false" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[產品名稱]]></text>
+				</staticText>
+				<staticText>
+					<reportElement positionType="Float" x="259" y="38" width="42" height="12" uuid="c4ee14ed-6d6b-4a14-89c4-456de078a606"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="Arial Unicode MS" size="8" isBold="false" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[保固狀態]]></text>
+				</staticText>
+				<staticText>
+					<reportElement positionType="Float" x="259" y="51" width="42" height="12" uuid="c26ac444-75fc-4b9f-8f1e-3a1c641bbf09"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="Arial Unicode MS" size="8" isBold="false" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[保固期限]]></text>
+				</staticText>
+				<staticText>
+					<reportElement positionType="Float" x="259" y="64" width="42" height="12" uuid="20f2dc0b-da5e-4ac9-a382-9fb1c1bc0db3"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="Arial Unicode MS" size="8" isBold="false" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[序號]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="259" y="178" width="46" height="12" uuid="84c6fe2c-381a-48b4-8e8a-eee621362bbf"/>
+					<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial Unicode MS" size="8" isBold="false" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[承辦人]]></text>
+				</staticText>
+				<textField isBlankWhenNull="true">
+					<reportElement x="308" y="165" width="202" height="12" uuid="a1cb65cd-3d95-4016-b096-dbf9d88d0d77"/>
+					<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0"/>
+					<textElement>
+						<font fontName="Arial Unicode MS" size="8" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{storephone}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="308" y="178" width="202" height="12" uuid="5c33cf91-1a96-47e8-90af-18a6ce4992a0"/>
+					<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0"/>
+					<textElement>
+						<font fontName="Arial Unicode MS" size="8" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{createdby}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="259" y="165" width="46" height="12" uuid="28388870-d3cd-40de-b9ca-f32a2e69673e"/>
+					<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial Unicode MS" size="8" isBold="false" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[門市電話]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="274" width="52" height="12" uuid="3d98ae81-911f-42af-803c-17848521108a"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="Arial Unicode MS" size="8" isBold="false" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[問題描述]]></text>
+				</staticText>
+				<textField isBlankWhenNull="true">
+					<reportElement x="54" y="274" width="470" height="30" uuid="011dda10-e2ba-4df5-ac67-8e00ce89daa3"/>
+					<textElement verticalAlignment="Top">
+						<font fontName="Arial Unicode MS" size="8" isBold="false" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{jobdesc}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="0" y="304" width="52" height="12" uuid="e2a4ab93-6dbe-4e84-9b4c-b3c529171d6a"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="Arial Unicode MS" size="8" isBold="false" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[收到物品]]></text>
+				</staticText>
+				<textField isBlankWhenNull="true">
+					<reportElement x="54" y="304" width="470" height="30" uuid="7145f7ca-3177-4bd7-9ed2-73c1e05cedf8"/>
+					<textElement verticalAlignment="Top">
+						<font fontName="Arial Unicode MS" size="8" isBold="false" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{jobitemdesc}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="0" y="209" width="252" height="12" uuid="4f4bde0a-2f62-47f8-a37e-f65b2ee81d81"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="Arial Unicode MS" size="8" isBold="false" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[問題]]></text>
+				</staticText>
+				<staticText>
+					<reportElement positionType="Float" x="1" y="482" width="49" height="13" uuid="747f76d1-3e0a-4c89-98d8-79438ed00e67"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="Arial Unicode MS" size="8" isBold="false" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[備註]]></text>
+				</staticText>
+				<textField isBlankWhenNull="true">
+					<reportElement positionType="Float" isPrintRepeatedValues="false" x="53" y="482" width="471" height="20" uuid="6e7050ee-5f14-4d93-bdec-56242d7058bc"/>
+					<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0"/>
+					<textElement textAlignment="Left" verticalAlignment="Top">
+						<font fontName="Arial Unicode MS" size="8" isBold="false" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{remarksquotation}]]></textFieldExpression>
+				</textField>
+				<image scaleImage="RetainShape" hAlign="Center" onErrorType="Blank">
+					<reportElement x="2" y="501" width="51" height="21" uuid="04f55b37-66a5-4179-883f-e2be9056b7e1"/>
+					<imageExpression><![CDATA[$P{signature}]]></imageExpression>
+				</image>
+				<textField isBlankWhenNull="true">
+					<reportElement x="1" y="533" width="112" height="10" uuid="52675cb8-4d08-4b98-9d7a-c5146bf933a6"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="Arial Unicode MS" size="8" isBold="false" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{cutomersignature}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="1" y="543" width="380" height="10" uuid="9097e8fa-a175-424b-925d-4d703ce2a5db"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="Arial Unicode MS" size="8" isBold="false" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{customername2}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="1" y="553" width="112" height="10" uuid="58af3c16-3730-4e44-8716-732e9bd10e9d"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="Arial Unicode MS" size="8" isBold="false" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{printdate1}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement positionType="Float" isPrintRepeatedValues="false" x="-1" y="565" width="526" height="10" uuid="1939ec5c-de5e-4885-9f57-99d459bb6ea0"/>
+					<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="Arial Unicode MS" size="6" isBold="false" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{footer1}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement positionType="Float" isPrintRepeatedValues="false" x="-1" y="575" width="526" height="10" uuid="c8ec8288-3f2d-4e1f-9ed9-8b7badcfba04"/>
+					<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="Arial Unicode MS" size="6" isBold="false" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{footer2}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement positionType="Float" isPrintRepeatedValues="false" x="-1" y="585" width="526" height="10" uuid="30773840-a358-42bd-b933-5694ce68e55e"/>
+					<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="Arial Unicode MS" size="6" isBold="false" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{footer3}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement positionType="Float" isPrintRepeatedValues="false" x="-1" y="595" width="526" height="10" uuid="30548f32-16ad-4055-b5e5-d7bb2f8107cd"/>
+					<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="Arial Unicode MS" size="6" isBold="false" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{footer4}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement positionType="Float" isPrintRepeatedValues="false" x="-1" y="605" width="526" height="10" uuid="bfc5142c-3464-4f6d-992c-c0c0030b90aa"/>
+					<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="Arial Unicode MS" size="6" isBold="false" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{footer5}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement positionType="Float" isPrintRepeatedValues="false" x="-1" y="615" width="526" height="10" uuid="da5eeee2-9ab2-4b63-8fb6-a0a7b4ffd1e2"/>
+					<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="Arial Unicode MS" size="6" isBold="false" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{footer6}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement positionType="Float" isPrintRepeatedValues="false" x="-1" y="625" width="526" height="10" uuid="80f23382-a365-4e27-aa9c-61beb8843ed5"/>
+					<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="Arial Unicode MS" size="6" isBold="false" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{footer7}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement positionType="Float" isPrintRepeatedValues="false" x="-1" y="655" width="526" height="10" uuid="9006dde0-edac-4ad9-aaa7-2fc9e2449004"/>
+					<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="Arial Unicode MS" size="6" isBold="false" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{footer10}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement positionType="Float" isPrintRepeatedValues="false" x="-1" y="635" width="526" height="10" uuid="61c98eb7-025a-4ee3-abab-9dfaba02618c"/>
+					<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="Arial Unicode MS" size="6" isBold="false" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{footer8}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="1" y="523" width="112" height="10" uuid="dd93403a-4696-43e4-b190-ed8516354eb4"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="Arial Unicode MS" size="8" isBold="false" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{line}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement positionType="Float" x="394" y="51" width="42" height="12" uuid="bcc40485-bedd-4cd2-914c-681a300d3fcc"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="Arial Unicode MS" size="8" isBold="false" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[密碼 1]]></text>
+				</staticText>
+				<staticText>
+					<reportElement positionType="Float" x="394" y="64" width="42" height="12" uuid="1494bbe1-4e81-44c9-bd75-0e7640d456b9"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="Arial Unicode MS" size="8" isBold="false" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[密碼 2]]></text>
+				</staticText>
+				<textField isBlankWhenNull="true">
+					<reportElement x="436" y="51" width="88" height="12" uuid="16cbe9b3-9f35-4e99-999b-85ea069fbbad"/>
+					<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0"/>
+					<textElement>
+						<font fontName="Arial Unicode MS" size="8" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{password1}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="436" y="64" width="88" height="12" uuid="fca4434c-edcd-43d3-b6e9-8ed7eb5139b7"/>
+					<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0"/>
+					<textElement>
+						<font fontName="Arial Unicode MS" size="8" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{password2}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement positionType="Float" isPrintRepeatedValues="false" x="-1" y="645" width="526" height="10" uuid="460e0fa1-d10f-46d5-ab68-3e91a0bba96f"/>
+					<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="Arial Unicode MS" size="6" isBold="false" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{footer9}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="259" y="191" width="46" height="12" uuid="9be35226-a965-4266-a4c4-a6eb4ee5dee4"/>
+					<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Arial Unicode MS" size="8" isBold="false" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<text><![CDATA[服務時間]]></text>
+				</staticText>
+				<textField isBlankWhenNull="true">
+					<reportElement x="308" y="191" width="202" height="12" uuid="b746b868-b4c8-4d46-a49b-edfdb2abacbc"/>
+					<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0"/>
+					<textElement>
+						<font fontName="Arial Unicode MS" size="8" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{time}]]></textFieldExpression>
+				</textField>
+				<image scaleImage="RetainShape" hAlign="Center" onErrorType="Blank">
+					<reportElement x="1" y="665" width="524" height="25" uuid="04e01d75-3ee5-4231-ab44-4a5f6f291eac"/>
+					<imageExpression><![CDATA[$P{companylogo}]]></imageExpression>
+				</image>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="1"/>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="74" splitType="Stretch">
+			<staticText>
+				<reportElement positionType="Float" x="0" y="36" width="35" height="12" uuid="18760f61-52a8-472c-a508-867d6d3507f3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial Unicode MS" size="8" isBold="false" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[報價單號]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="36" y="36" width="132" height="12" uuid="dbed6640-7424-4bf1-9056-b880dd4bd24f"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial Unicode MS" size="8" isBold="false" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{quenumber}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="370" y="49" width="49" height="12" uuid="0f2b6286-06b8-4ff5-aa3d-d1528e6a6f08"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial Unicode MS" size="8" isBold="false" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[參考編號]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="0" y="49" width="35" height="12" uuid="e9b701c9-e60f-4b36-b016-931ba36b186d"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial Unicode MS" size="8" isBold="false" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[日期]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="419" y="49" width="105" height="12" isPrintWhenDetailOverflows="true" uuid="5077f6a5-80b9-489a-b135-365812895e74"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial Unicode MS" size="8" isBold="false" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{refnum}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="36" y="49" width="132" height="12" uuid="c4bd4885-c01d-4cbb-a9c7-8a5598a1df30"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial Unicode MS" size="8" isBold="false" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{printdate}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement positionType="Float" x="0" y="71" width="525" height="1" uuid="b672ccf2-9a2d-4dd7-902d-f0681fe910f7"/>
+			</line>
+			<textField>
+				<reportElement positionType="Float" x="480" y="0" width="43" height="12" uuid="2b3270d2-9b2e-4aa9-90e8-824c28741f47"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="400" y="0" width="80" height="12" uuid="5bae12af-5105-498a-953f-78aaa1f9867e"/>
+				<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial Unicode MS" size="8" isBold="false" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[頁]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" x="419" y="36" width="105" height="12" uuid="9641ec96-6cd9-4e48-a850-bd1802b891bd"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial Unicode MS" size="8" isBold="false" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{expdate}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="370" y="36" width="49" height="12" uuid="9e130364-4903-4426-8e38-3f8fec2dd958"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial Unicode MS" size="8" isBold="false" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[預計取件日期]]></text>
+			</staticText>
+			<image scaleImage="RetainShape" hAlign="Center" onErrorType="Blank">
+				<reportElement x="1" y="0" width="523" height="23" uuid="a2cdf37a-92d7-494d-8035-b5bef63be95f"/>
+				<imageExpression><![CDATA[$P{logofile1}]]></imageExpression>
+			</image>
+		</band>
+	</pageHeader>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

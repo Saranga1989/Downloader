@@ -1,0 +1,615 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="invoice" language="groovy" pageWidth="200" pageHeight="600" whenNoDataType="BlankPage" columnWidth="190" leftMargin="5" rightMargin="5" topMargin="10" bottomMargin="10" isIgnorePagination="true" uuid="af6e6eeb-53ec-4bbb-910c-9b75db8dff14">
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="143"/>
+	<subDataset name="SubSet1" uuid="2914f7c6-c2d7-448b-b0c1-090970e18ed6">
+		<queryString>
+			<![CDATA[]]>
+		</queryString>
+		<field name="mode" class="java.lang.String"/>
+		<field name="amount" class="java.lang.String"/>
+	</subDataset>
+	<parameter name="gstreg" class="java.lang.String"/>
+	<parameter name="companyname" class="java.lang.String"/>
+	<parameter name="document_title" class="java.lang.String"/>
+	<parameter name="logofile" class="java.lang.String"/>
+	<parameter name="reportid" class="java.lang.Integer"/>
+	<parameter name="show_salesman" class="java.lang.String">
+		<defaultValueExpression><![CDATA[0]]></defaultValueExpression>
+	</parameter>
+	<parameter name="currencycode" class="java.lang.String"/>
+	<parameter name="locationadd1" class="java.lang.String"/>
+	<parameter name="invoicefooter" class="java.lang.String"/>
+	<parameter name="taxcode" class="java.lang.String"/>
+	<parameter name="show_brand" class="java.lang.String"/>
+	<parameter name="show_category" class="java.lang.String"/>
+	<parameter name="show_coloursize" class="java.lang.String"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["D:\\Project\\OnlinePos\\OnlinePOS_3.0\\ireport\\"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="rewardpointsearned" class="java.lang.Double">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="rewardpointsburned" class="java.lang.Double">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="reportDataSource" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource">
+		<parameterDescription><![CDATA[]]></parameterDescription>
+	</parameter>
+	<queryString>
+		<![CDATA[Select 	l.locationcode,
+	l.locationname,
+	l.locationphone,
+l.locationemail,l.locationfax,
+	l.locationadd1,
+	l.locationadd2,
+	l.locationadd3,
+	l.locationadd4,
+        i.taxtype,
+        i.excludetax,
+        CASE WHEN t.taxamount IS NULL THEN 0 ELSE t.taxamount END AS taxamount,
+	i.invoicenumber,i.salestype, t.foreignnet, t.foreignprice,t.foreigndiscount,
+	date(i.invoicedate) as invdate ,
+	i.invoicedate,i.salestype,
+	i.salesmancode,t.receiptdiscount,
+	case when t.promoitem = 1 then '  *' || p.productcode else p.productcode end as productcode ,
+	case when t.promoitem = 1 then '  *' || p.productitemdesc else p.productitemdesc end as productitemdesc,
+p.color,p.size, p.producttype2,
+	b.productbranddesc, cat.productcategorycode, p.retailsalesprice as rsp,
+	i.netsalesamount,
+	case when t.promoid > 0 and t.promoitem = 0 and t.receiptdiscount > 0
+then  (t.receiptdiscount / p.retailsalesprice * 100) else t.discountpercentage end as discountpercentage,
+
+case when t.promoid > 0 and t.promoitem = 0 and t.receiptdiscount > 0
+then  t.receiptdiscount else t.discountamount end as discountamount,
+	t.quantity,t.serialnumber,
+t.promoitem, t.promoid, t.remark as itemremark,
+t.sp_remark as specialremark, ua.username as itemsalesman,
+	t.netamount, t.serialnumber,
+	u.employeecode,
+	t.retailsalesprice,
+	u.fullname,
+	i.term,i.invoicetype,
+	i.deliveryaddress, i.deliveryaddress2, i.deliverydate,
+case when 	i.remark is null then '' else i.remark end as remark,
+case when 	i.voidreason is null then '' else i.voidreason end as voidreason,
+	i.status,
+	c.name,c.company,
+	c.surname,
+	i.customer,i.reference,
+case when  i.customerphone is not null and i.customerphone != '' then i.customerphone
+when c.handphone != null or c.handphone !='' then c.handphone else c.homephone end as custphone,
+c.officephone,
+	c.address1, c.address2,
+	case when (i.customername is not null  and i.customername != '' ) then i.customername
+	when (i.customer > 0 ) then c.name || ' ' ||  c.surname else '' end as custname,
+case when i.customeraddress is not null then i.customeraddress else '' end as customeraddress,
+trim(case when (i.customer > 0 ) then c.address1  else '' end ) as custaddress,
+trim(case when (i.customer > 0 ) then  c.address2  else '' end ) as custaddress2,
+trim(case when (i.customer > 0 ) then  c.address3  else '' end ) as custaddress3,
+
+trim(case when (i.customer > 0 ) and c.postalcode is not null and c.postalcode != '' then   c.postalcode  || ' ' else '' end ) as custpostal,
+
+trim(case when (i.customer > 0 ) and c.country is not null and c.country != ''  then  c.country  else '' end ) as custcountry,
+
+(select organisation_footer from organisation where organisation_id=(select organisation_id from locationinfo where locationid=i.location)) as invoicefooter,
+(select stringvalue2 from mistable where stringvalue1 ='consignment_footer') as consignmentfooter,
+(Select stringvalue2 from mistable where stringvalue1 ilike 'show_multiplesalesman') as multisalesman, i.salesmanlist,
+CASE WHEN i.salesmanlist IS NOT NULL OR i.salesmanlist <> '' THEN i.salesmanlist ELSE 
+(select array_to_string(array(select u.fullname from  invoicesalesman i inner join userinfo u
+on i.salesmanid = u.userid where invoice=$P{reportid} ), ',<BR>') )  END as saleslist,
+(select stringvalue2 as hide_discount from mistable where stringvalue1= 'hide_discount') as hide_discount
+,
+(case when (i.invoicetype = 10 or i.invoicetype = 13 or i.invoicetype = 26) then (Select invoicenumber from invoiceinfo where invoiceid = i.returninvoice ) else '' end ) as returninvoice,
+i.deliveryaddress,i.deliveryaddress2,i.standing_instruction,
+(select stringvalue2 from mistable where stringvalue1= 'reference_label') as referencelabel ,
+case when l.syssetting is null then 0 else l.syssetting end as syssetting, case when l.footer is null then '' else l.footer end as outletfooter, i.remark2 ,so.salesordernumber
+,split_part(t.remark3, '@@', 1) as batchnumber 
+,split_part(t.remark3, '@@', 2) as  batchqty,
+ split_part(t.remark3, '@@', 4) as  batchexp,
+p.hasbatch,p.productskunumber,si.sizecode,col.colourcode,b.productbrandcode,p.sex,c.customercode,p.productcode as prditemcode
+from 	invoiceinfo i inner join locationinfo l on i.location = l.locationid
+left join invoiceitem  t on i.invoiceid = t.invoice
+left join productitem p on t.productitem = p.productitemid
+left join userinfo u on i.staff = u.userid
+left join productbrand b on p.productbrand = b.productbrandid
+left join customerinfo c on i.customer = c.customerid
+left join productcategory cat on p.productcategory =cat.productcategoryid
+left join salesorder so on i.salesorder= so.salesorderid
+left join useraccess ua on t.salesman = ua.useraccessid
+left join size si on p.sizeid = si.sizeid
+left join colour col on p.colourid = col.colourid
+
+where i.invoiceid = $P{reportid} order by t.invoiceitemid]]>
+	</queryString>
+	<field name="prditemcode" class="java.lang.String"/>
+	<field name="customercode" class="java.lang.String"/>
+	<field name="sizecode" class="java.lang.String"/>
+	<field name="colourcode" class="java.lang.String"/>
+	<field name="productbrandcode" class="java.lang.String"/>
+	<field name="sex" class="java.lang.String"/>
+	<field name="productskunumber" class="java.lang.String"/>
+	<field name="itemsalesman" class="java.lang.String"/>
+	<field name="locationcode" class="java.lang.String"/>
+	<field name="locationname" class="java.lang.String"/>
+	<field name="locationphone" class="java.lang.String"/>
+	<field name="locationemail" class="java.lang.String"/>
+	<field name="locationfax" class="java.lang.String"/>
+	<field name="locationadd2" class="java.lang.String"/>
+	<field name="locationadd3" class="java.lang.String"/>
+	<field name="locationadd4" class="java.lang.String"/>
+	<field name="salestype" class="java.lang.String"/>
+	<field name="foreignnet" class="java.lang.Double"/>
+	<field name="foreignprice" class="java.lang.Double"/>
+	<field name="foreigndiscount" class="java.lang.Double"/>
+	<field name="invoicenumber" class="java.lang.String"/>
+	<field name="invoicetype" class="java.lang.Integer"/>
+	<field name="invdate" class="java.sql.Date"/>
+	<field name="invoicedate" class="java.sql.Timestamp"/>
+	<field name="salesmancode" class="java.lang.String"/>
+	<field name="productcode" class="java.lang.String"/>
+	<field name="productitemdesc" class="java.lang.String"/>
+	<field name="productcategorycode" class="java.lang.String"/>
+	<field name="color" class="java.lang.String"/>
+	<field name="size" class="java.lang.String"/>
+	<field name="productbranddesc" class="java.lang.String"/>
+	<field name="reference" class="java.lang.String"/>
+	<field name="netsalesamount" class="java.lang.Double"/>
+	<field name="taxamount" class="java.lang.Double"/>
+	<field name="discountpercentage" class="java.lang.Double"/>
+	<field name="discountamount" class="java.lang.Double"/>
+	<field name="quantity" class="java.lang.Long"/>
+	<field name="netamount" class="java.lang.Double"/>
+	<field name="employeecode" class="java.lang.String"/>
+	<field name="retailsalesprice" class="java.lang.Double"/>
+	<field name="rsp" class="java.lang.Double"/>
+	<field name="fullname" class="java.lang.String"/>
+	<field name="term" class="java.lang.String"/>
+	<field name="deliveryaddress" class="java.lang.String"/>
+	<field name="remark" class="java.lang.String"/>
+	<field name="receiptdiscount" class="java.lang.Double"/>
+	<field name="serialnumber" class="java.lang.String"/>
+	<field name="itemremark" class="java.lang.String"/>
+	<field name="voidreason" class="java.lang.String"/>
+	<field name="status" class="java.lang.Integer"/>
+	<field name="promoid" class="java.lang.Integer"/>
+	<field name="promoitem" class="java.lang.Integer"/>
+	<field name="name" class="java.lang.String"/>
+	<field name="surname" class="java.lang.String"/>
+	<field name="company" class="java.lang.String"/>
+	<field name="customer" class="java.lang.Integer"/>
+	<field name="custphone" class="java.lang.String"/>
+	<field name="officephone" class="java.lang.String"/>
+	<field name="address1" class="java.lang.String"/>
+	<field name="address2" class="java.lang.String"/>
+	<field name="custname" class="java.lang.String"/>
+	<field name="custaddress" class="java.lang.String"/>
+	<field name="custaddress2" class="java.lang.String"/>
+	<field name="custaddress3" class="java.lang.String"/>
+	<field name="invoicefooter" class="java.lang.String"/>
+	<field name="hide_discount" class="java.lang.String"/>
+	<field name="returninvoice" class="java.lang.String"/>
+	<field name="multisalesman" class="java.lang.String"/>
+	<field name="salesmanlist" class="java.lang.String"/>
+	<field name="saleslist" class="java.lang.String"/>
+	<field name="syssetting" class="java.lang.Integer"/>
+	<field name="outletfooter" class="java.lang.String"/>
+	<field name="producttype2" class="java.lang.String"/>
+	<field name="excludetax" class="java.lang.Integer"/>
+	<variable name="price" class="java.lang.Double">
+		<variableExpression><![CDATA[( $F{promoid} != null && $F{promoid} > 0 ? $F{rsp} :
+
+ $F{retailsalesprice} )]]></variableExpression>
+	</variable>
+	<variable name="productnet" class="java.lang.Double">
+		<variableExpression><![CDATA[( $F{promoid} != null && $F{promoid} > 0 && $F{promoitem} ==0 ? $F{rsp} - $F{receiptdiscount} :
+
+ $F{netamount}  )]]></variableExpression>
+	</variable>
+	<variable name="quantity_1" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{quantity}]]></variableExpression>
+	</variable>
+	<variable name="totalquantity" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{quantity}]]></variableExpression>
+	</variable>
+	<variable name="taxamount_1" class="java.lang.Float" calculation="Sum">
+		<variableExpression><![CDATA[$F{taxamount}]]></variableExpression>
+	</variable>
+	<variable name="netamount_1" class="java.lang.Float" calculation="Sum">
+		<variableExpression><![CDATA[$F{netamount}]]></variableExpression>
+	</variable>
+	<variable name="discountamount_1" class="java.lang.Float" calculation="Sum">
+		<variableExpression><![CDATA[$F{discountamount}]]></variableExpression>
+	</variable>
+	<group name="collection" isStartNewPage="true">
+		<groupExpression><![CDATA[$P{reportid}]]></groupExpression>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<group name="invoicefooter">
+		<groupExpression><![CDATA[$P{reportid}]]></groupExpression>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<group name="invoicegroup">
+		<groupExpression><![CDATA[$P{reportid}]]></groupExpression>
+		<groupFooter>
+			<band height="1">
+				<printWhenExpression><![CDATA[$F{customer} != null && $F{customer} > 0]]></printWhenExpression>
+			</band>
+		</groupFooter>
+	</group>
+	<group name="invoice">
+		<groupExpression><![CDATA[$P{reportid}]]></groupExpression>
+		<groupFooter>
+			<band height="195">
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement x="0" y="0" width="189" height="195" isRemoveLineWhenBlank="true" uuid="485521ed-62e5-41ab-bc59-1b4e83976655"/>
+					<textElement textAlignment="Center" verticalAlignment="Top" markup="html">
+						<font fontName="Dialog" size="8" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{invoicefooter}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<group name="totalqty">
+		<groupExpression><![CDATA[$P{reportid}]]></groupExpression>
+		<groupFooter>
+			<band height="117">
+				<textField pattern="###0.00;-###0.00">
+					<reportElement x="150" y="38" width="39" height="10" uuid="4763e50e-18b2-40c1-baa2-b0a29cc212c3"/>
+					<textElement textAlignment="Right">
+						<font fontName="Dialog" size="8" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{taxamount_1}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="78" y="18" width="72" height="10" uuid="35069c09-06d6-481d-b71b-f2c9227a0595"/>
+					<textElement textAlignment="Right" verticalAlignment="Top">
+						<font fontName="Dialog" size="8" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Sub Total "+ ( $P{currencycode} == null ? "\$" : $P{currencycode} )]]></textFieldExpression>
+				</textField>
+				<textField pattern="###0.00;-###0.00">
+					<reportElement x="150" y="48" width="39" height="10" uuid="17fed6df-e466-44f8-a4ef-9f5fc7739538"/>
+					<textElement textAlignment="Right">
+						<font fontName="Dialog" size="8" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[( $F{excludetax} == 1 ? $V{netamount_1}+$V{taxamount_1} : $V{netamount_1} )]]></textFieldExpression>
+				</textField>
+				<textField pattern="###0.00;-###0.00">
+					<reportElement x="150" y="28" width="39" height="10" uuid="0a30160d-66ff-4a13-bde2-acf2ae91ed56"/>
+					<textElement textAlignment="Right">
+						<font fontName="Dialog" size="8" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{discountamount_1}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="22" y="48" width="128" height="10" uuid="eab64790-9877-4531-9e72-d60335be683e"/>
+					<textElement textAlignment="Right" verticalAlignment="Top">
+						<font fontName="Dialog" size="8" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Amount Due " + ( $P{currencycode} == null ? "\$" : $P{currencycode} )]]></textFieldExpression>
+				</textField>
+				<textField pattern="###0.00;-###0.00">
+					<reportElement x="150" y="18" width="39" height="10" uuid="74e02c33-1767-4deb-8dd3-749d6b301a45"/>
+					<textElement textAlignment="Right">
+						<font fontName="Dialog" size="8" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{netamount_1}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="22" y="38" width="128" height="10" uuid="3214b671-b005-430e-97a4-1b0b1e3e7c9a"/>
+					<textElement textAlignment="Right" verticalAlignment="Top">
+						<font fontName="Dialog" size="8" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["GST 7% " + ( $P{currencycode} == null ? "\$" : $P{currencycode} )]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="22" y="28" width="128" height="10" uuid="22d9e090-eec0-49f7-a837-4f159f2a9f97"/>
+					<textElement textAlignment="Right" verticalAlignment="Top">
+						<font fontName="Dialog" size="8" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Discount " + ( $P{currencycode} == null ? "\$" : $P{currencycode} )]]></textFieldExpression>
+				</textField>
+				<textField pattern="###0.00;-###0.00">
+					<reportElement x="150" y="8" width="39" height="10" uuid="7754096a-fb0b-4d33-9360-142e657b5e05"/>
+					<textElement textAlignment="Right">
+						<font fontName="Dialog" size="8" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{quantity_1}]]></textFieldExpression>
+				</textField>
+				<componentElement>
+					<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="22" y="66" width="167" height="46" isRemoveLineWhenBlank="true" isPrintInFirstWholeBand="true" isPrintWhenDetailOverflows="true" uuid="5085967a-3153-4827-b782-2f6222983f05">
+						<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
+					</reportElement>
+					<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" whenNoDataType="AllSectionsNoDetail">
+						<datasetRun subDataset="SubSet1" uuid="57f386e5-1943-4250-971e-686f238228b5">
+							<dataSourceExpression><![CDATA[$P{reportDataSource}]]></dataSourceExpression>
+						</datasetRun>
+						<jr:column width="128" uuid="7f8a15e9-f313-438b-9afa-b5e1b17cb16a">
+							<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column1"/>
+							<jr:detailCell height="18">
+								<textField>
+									<reportElement x="0" y="0" width="128" height="18" uuid="dae30be5-00d4-442d-b28a-ace92c1f82e5"/>
+									<textElement textAlignment="Right">
+										<font size="8" isBold="false"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$F{mode}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="39" uuid="65b12874-3ae7-47ca-bf28-9efad58430af">
+							<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column3"/>
+							<jr:detailCell height="18">
+								<textField>
+									<reportElement x="0" y="0" width="39" height="18" uuid="3b925f9e-4ca9-4839-9a41-db7e2047c3b7"/>
+									<textElement textAlignment="Left">
+										<font size="8" isBold="false"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$F{amount}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+					</jr:table>
+				</componentElement>
+				<textField>
+					<reportElement x="21" y="8" width="129" height="10" uuid="4b217e6d-fb80-418e-8bae-9c9dcb69f1c0"/>
+					<textElement textAlignment="Right" verticalAlignment="Top">
+						<font fontName="Dialog" size="8" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" Total Quantity "+ ( $P{currencycode} == null ? "\$" : $P{currencycode} )]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement x="0" y="3" width="188" height="1" uuid="5188e453-8b85-479c-a525-03f5ec14c374"/>
+					<graphicElement>
+						<pen lineStyle="Dashed"/>
+					</graphicElement>
+				</line>
+				<line>
+					<reportElement x="1" y="114" width="188" height="1" uuid="2a42b3cc-c750-4b11-8b89-45d137af0746"/>
+					<graphicElement>
+						<pen lineStyle="Dashed"/>
+					</graphicElement>
+				</line>
+				<line>
+					<reportElement x="1" y="62" width="188" height="1" uuid="23e37429-fdf0-4ad8-9e9a-8fed57c64de9"/>
+					<graphicElement>
+						<pen lineStyle="Dashed"/>
+					</graphicElement>
+				</line>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="158" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="155" width="188" height="1" uuid="555d5442-e614-4d3f-bf81-a2dd91065393"/>
+				<graphicElement>
+					<pen lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="0" y="5" width="188" height="1" uuid="3155f5b5-a7d6-487f-9b7c-6a5f58659fde"/>
+				<graphicElement>
+					<pen lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement x="0" y="9" width="190" height="13" uuid="6d4f67b5-b150-4525-906f-96c8bc7f3f7d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Dialog" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{companyname}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="0" y="22" width="190" height="13" uuid="8fac4367-368a-497b-8f12-a16dacabef0b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Dialog" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{document_title} + ($F{status}==1 ? "" : " (Voided)")]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="1" y="35" width="188" height="56" isRemoveLineWhenBlank="true" uuid="467d1900-7edf-4f6b-a4d6-885d6e2c7478"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="html">
+					<font fontName="Dialog" size="8" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{locationadd1}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="91" width="188" height="1" uuid="8a012e8d-c3d8-4946-b7eb-5e758c3a3e82"/>
+				<graphicElement>
+					<pen lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement x="0" y="128" width="191" height="12" uuid="75ca863a-b095-4cfc-8f4d-4fe40e35e222"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Dialog" size="9" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Customer Code : "+$F{customercode}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
+				<reportElement x="0" y="104" width="191" height="12" uuid="d57f4df4-476f-49ca-bfe7-af3f28bf1112"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Dialog" size="9" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Invoice Date : "+$F{invoicedate}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="0" y="116" width="190" height="12" uuid="7f902ff4-7881-432c-b26c-4a002deb3655"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Dialog" size="9" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Cashier : "+$F{fullname}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="0" y="140" width="191" height="12" uuid="86d42833-fce2-426f-8958-6a56860a5554"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Dialog" size="9" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Salesman Code : "+$F{fullname}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="0" y="92" width="191" height="12" uuid="514a670b-9f33-48e5-a18f-e7c8a70fb1e3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Dialog" size="9" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Invoice : "+$F{invoicenumber}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="15" splitType="Stretch">
+			<textField>
+				<reportElement x="147" y="0" width="41" height="13" uuid="629e3ad8-99b4-4993-9dfc-59d0ef9d27e6"/>
+				<textElement textAlignment="Right" verticalAlignment="Bottom">
+					<font fontName="Dialog" size="8" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Amount"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="18" y="0" width="49" height="13" uuid="c6f452b4-39ca-4cca-8b9f-5f6f57c5e0b0"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Dialog" size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Items]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="97" y="0" width="52" height="13" uuid="f1753604-aeef-480b-831c-5f8f8821772d"/>
+				<textElement textAlignment="Right" verticalAlignment="Bottom">
+					<font fontName="Dialog" size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Unit Price]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="0" width="17" height="13" uuid="ecee3a0e-d740-46d6-8b8e-62f5da54bb1f"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Dialog" size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Qty]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="82" splitType="Stretch">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="19" y="34" width="143" height="10" isRemoveLineWhenBlank="true" uuid="0b6bebb7-0f1e-4f60-9248-866bb819bb04">
+					<printWhenExpression><![CDATA[($F{itemsalesman} != null && $F{itemsalesman} != "")]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font fontName="Dialog" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Brand : " + $F{productbrandcode} +"  Sx: " + $F{sex}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="1" y="2" width="18" height="10" uuid="0f658581-bbb1-4cb0-998e-432edb8e41cd"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Dialog" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{quantity}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="19" y="23" width="143" height="10" isRemoveLineWhenBlank="true" uuid="eeefc086-bc32-42c3-86ba-ffc47d4ec7e4">
+					<printWhenExpression><![CDATA[($F{itemsalesman} != null && $F{itemsalesman} != "")]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font fontName="Dialog" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{productskunumber}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="19" y="12" width="143" height="10" uuid="4279ad55-caac-401a-9eb7-88ed9d83618e"/>
+				<textElement>
+					<font fontName="Dialog" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{productitemdesc}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="19" y="2" width="79" height="10" isRemoveLineWhenBlank="true" uuid="4425cbb7-4753-445b-b0c6-bf66f9c39b34">
+					<printWhenExpression><![CDATA[($F{itemsalesman} != null && $F{itemsalesman} != "")]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Dialog" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{productcode}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="19" y="45" width="143" height="10" isRemoveLineWhenBlank="true" uuid="ffb1dbae-7941-49d6-be3b-7dda6f12c201">
+					<printWhenExpression><![CDATA[($F{itemsalesman} != null && $F{itemsalesman} != "")]]></printWhenExpression>
+				</reportElement>
+				<textElement>
+					<font fontName="Dialog" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["SIze : " + $F{sizecode} +"  Color: " + $F{colourcode}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00;-###0.00" isBlankWhenNull="true">
+				<reportElement mode="Transparent" x="150" y="65" width="39" height="10" uuid="5a8a1f6a-ca69-49fd-b733-6e32723adbed"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Dialog" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{productnet}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00;-###0.00" isBlankWhenNull="true">
+				<reportElement x="150" y="55" width="39" height="10" uuid="bcef620e-8f4f-45b7-b65c-a949818e20ae">
+					<printWhenExpression><![CDATA[$F{productcode} != null && $F{discountamount} > 0 &&
+$F{hide_discount} != "1"]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Dialog" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{discountamount}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00;-###0.00" isBlankWhenNull="true">
+				<reportElement x="57" y="55" width="93" height="10" uuid="8d9ba68c-923a-495b-9bde-360a592794cf">
+					<printWhenExpression><![CDATA[$F{productcode} != null && $F{discountamount} > 0 &&
+$F{hide_discount} != "1"]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Dialog" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Discount ("+$F{discountpercentage}+"%)"]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00;-###0.00" isBlankWhenNull="true">
+				<reportElement x="98" y="2" width="52" height="10" uuid="334ee777-3d64-46f1-9231-7fcea784babf"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Dialog" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[( $F{producttype2} ==3 ? $F{rsp} : $F{retailsalesprice} )]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="114" y="65" width="36" height="10" uuid="ae66c6a3-b3df-422e-8fdc-002ca37e0972"/>
+				<textElement textAlignment="Right" verticalAlignment="Top">
+					<font fontName="Dialog" size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[ Amount]]></text>
+			</staticText>
+			<textField pattern="###0.00;-###0.00" isBlankWhenNull="true">
+				<reportElement mode="Transparent" x="150" y="2" width="39" height="10" uuid="6216c780-bb26-4bc0-b3f7-9323cd3f515a"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Dialog" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[(( $F{producttype2} ==3 ? $F{rsp} : $F{retailsalesprice} ) *($F{quantity}))]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
